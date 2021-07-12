@@ -15,7 +15,7 @@ public class LogsTest {
   private Logger logger = LogManager.getLogger(LogsTest.class);
 
   // Читаем передаваемый параметр browser (-Dbrowser)
-  String env = System.getProperty("browser", "opera");
+  String env = System.getProperty("browser", "chrome");
 
   @BeforeEach
   public void setUp() {

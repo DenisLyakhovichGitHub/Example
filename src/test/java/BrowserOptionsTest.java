@@ -56,7 +56,7 @@ public class BrowserOptionsTest {
     // Добавление свойств браузера Google Chrome (настройки сессии)
     WebDriverManager.chromedriver().setup();
     ChromeOptions options = new ChromeOptions();
-    options.setCapability(CapabilityType.PLATFORM_NAME, Platform.MAC);
+    options.setCapability(CapabilityType.PLATFORM_NAME, Platform.ANY);
     options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.DISMISS);
     options.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
     options.setAcceptInsecureCerts(false);
