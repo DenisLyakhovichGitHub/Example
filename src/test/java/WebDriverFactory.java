@@ -66,7 +66,7 @@ public class WebDriverFactory {
         optionsOpera.setCapability(CapabilityType.PLATFORM_NAME, Platform.ANY);
         optionsOpera.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.DISMISS);
         optionsOpera.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
-
+        optionsOpera.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         optionsOpera.addArguments("--start-maximized");
         optionsOpera.addArguments("--incognito");
 

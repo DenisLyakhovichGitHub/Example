@@ -11,6 +11,15 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Locatable;
+import org.openqa.selenium.interactions.Mouse;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.interactions.HasInputDevices;
+import java.awt.AWTException;
+import java.awt.MouseInfo;
+
+import java.awt.Robot;
 
 
 
@@ -395,13 +404,18 @@ public class WebElementsDifficultActionsTest {
   }
 
   @Test
-  public void releaseTargetTest() {
+  public void releaseTargetTest() throws AWTException {
     driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(80));
     driver.manage().window().maximize();
     driver.get("https://webdriveruniversity.com/Actions/index.html#");
     logger.info("Открыта страница webdriveruniversity.com - " +
         "https://webdriveruniversity.com/Actions/index.html#");
     WebElement element = driver.findElement(By.id("click-box"));
+
+    Point coordinates = driver.findElement(By.id("click-box")).getLocation();
+    Robot robot = new Robot();
+    robot.mouseMove(coordinates.getX(),coordinates.getY()+120);
+
     // Отпускание левой кнопки мыши в центре элемента
     Actions actions = new Actions(driver);
     actions
