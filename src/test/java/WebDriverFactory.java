@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
@@ -23,15 +24,16 @@ public class WebDriverFactory {
       case "chrome":
         WebDriverManager.chromedriver().setup();
         ChromeOptions optionsChrome = new ChromeOptions();
-        optionsChrome.setCapability(CapabilityType.PLATFORM_NAME, Platform.ANY);
-        optionsChrome.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.DISMISS);
-        optionsChrome.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
-        optionsChrome.setAcceptInsecureCerts(false);
+        //optionsChrome.setCapability(CapabilityType.PLATFORM_NAME, Platform.MAC);
+        //optionsChrome.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.DISMISS);
+        //optionsChrome.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
+        //optionsChrome.setAcceptInsecureCerts(false);
         optionsChrome.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
         // Добавление аргументов запуска Google Chrome
-        optionsChrome.addArguments("--start-maximized");
-        optionsChrome.addArguments("--incognito");
+        //optionsChrome.addArguments("--start-maximized");
+        //optionsChrome.addArguments("--incognito");
+        //optionsChrome.addArguments("--window-size=1700,800");
 
         logger.info("Драйвер для браузера Chrome");
         return new ChromeDriver(optionsChrome);
@@ -57,8 +59,10 @@ public class WebDriverFactory {
 
       case "edge":
         WebDriverManager.edgedriver().setup();
-        logger.info("Драйвер для браузера Edge");
-        return new EdgeDriver();
+        logger.info("Драйвер для браузера Microsoft Edge");
+        EdgeOptions edgeOptions = new EdgeOptions();
+        edgeOptions.addArguments("--start-maximized");
+        return new EdgeDriver(edgeOptions);
 
       case "opera":
         WebDriverManager.operadriver().setup();
@@ -67,7 +71,7 @@ public class WebDriverFactory {
         optionsOpera.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.DISMISS);
         optionsOpera.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
         optionsOpera.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        optionsOpera.addArguments("--start-maximized");
+        //optionsOpera.addArguments("--start-maximized");
         optionsOpera.addArguments("--incognito");
 
         logger.info("Драйвер для браузера Opera");
